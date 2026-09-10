@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card" style="max-width: 500px; margin: 0 auto;">
+    <h2>Заполните форму</h2>
+    <form method="post" style="margin-top: 15px;">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Название / Имя</label>
+            <input type="text" name="name" value="{% if object %}{{ object.name }}{% endif %}">
+        </div>
+        <div class="form-group">
+            <label>Описание / Телефон / Адрес</label>
+            <input type="text" name="description" value="{% if object %}{{ object.description }}{{ object.phone }}{{ object.address }}{% endif %}">
+        </div>
+        <div class="form-group">
+            <label>Цена (если товар)</label>
+            <input type="text" name="price" value="{% if object %}{{ object.price }}{% endif %}">
+        </div>
+        <div class="form-group">
+            <label>Количество (если товар)</label>
+            <input type="text" name="quantity" value="{% if object %}{{ object.quantity }}{% endif %}">
+        </div>
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+            <button type="submit" class="btn">Сохранить</button>
+            <a href="javascript:history.back()" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

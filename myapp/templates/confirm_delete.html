@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card" style="max-width: 400px; margin: 0 auto; text-align: center;">
+    <h2>Удалить объект?</h2>
+    <p style="margin-top: 10px;">Это действие нельзя будет отменить.</p>
+    <form method="post" style="margin-top: 20px; display: flex; justify-content: center; gap: 10px;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Да, удалить</button>
+        <a href="javascript:history.back()" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <h1>Панель управления</h1>
+    <p style="margin: 15px 0;">Выбери раздел для работы с базой данных:</p>
+    <div style="display: flex; gap: 10px;">
+        <a href="{% url 'category_list' %}" class="btn">Categories</a>
+        <a href="{% url 'product_list' %}" class="btn">Products</a>
+        <a href="{% url 'customer_list' %}" class="btn">Customers</a>
+    </div>
+</div>
+{% endblock %}

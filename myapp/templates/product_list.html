@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="header-action">
+    <h2>Products</h2>
+    <a href="{% url 'product_create' %}" class="btn">+ Добавить</a>
+</div>
+
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Кол-во</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in object_list %}
+            <tr>
+                <td>{{ p.pk }}</td>
+                <td><a href="{% url 'product_detail' p.pk %}">{{ p.name }}</a></td>
+                <td>${{ p.price }}</td>
+                <td>{{ p.quantity }} шт.</td>
+                <td>
+                    <a href="{% url 'product_update' p.pk %}" class="btn" style="padding: 4px 8px; font-size: 12px;">Ред.</a>
+                    <a href="{% url 'product_delete' p.pk %}" class="btn btn-danger" style="padding: 4px 8px; font-size: 12px;">Уд.</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5">Записей нет</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
