@@ -88,8 +88,8 @@ def customer_create(request):
     if request.method == 'POST':
         Customer.objects.create(
             name=request.POST.get('name'),
-            phone=request.POST.get('phone'),
-            address=request.POST.get('address')
+            phone=request.POST.get('description'), 
+            address=request.POST.get('description') 
         )
         return redirect('customer_list')
     return render(request, 'form.html')
@@ -98,8 +98,8 @@ def customer_update(request, pk):
     customer = Customer.objects.get(pk=pk)
     if request.method == 'POST':
         customer.name = request.POST.get('name')
-        customer.phone = request.POST.get('phone')
-        customer.address = request.POST.get('address')
+        customer.phone = request.POST.get('description')
+        customer.address = request.POST.get('description')
         customer.save()
         return redirect('customer_list')
     return render(request, 'form.html', {'object': customer})
