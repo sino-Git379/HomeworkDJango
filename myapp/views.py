@@ -41,6 +41,17 @@ def category_delete(request, pk):
 
 def product_list(request):
     products = Product.objects.all()
+    search_query = request.GET.get('search')
+    if search_query:
+        products = products.filter(name__icontains=search_query)
+
+    min_price = request.GET.get('min_price')
+    if min_price:
+        products = products.filter(price__gte=min_price)
+    max_price = request.GET.get('max_price')
+    if max_price:
+        products = products.filter(price__lte=max_price)
+
     return render(request, 'product_list.html', {'object_list': products})
 
 def product_detail(request, pk):
@@ -78,6 +89,9 @@ def product_delete(request, pk):
 
 def customer_list(request):
     customers = Customer.objects.all()
+    search_query = request.GET.get('search')
+    if search_query:
+        customers = customers.filter(name__icontains=search_query)
     return render(request, 'customer_list.html', {'object_list': customers})
 
 def customer_detail(request, pk):

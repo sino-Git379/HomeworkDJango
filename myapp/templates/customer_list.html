@@ -5,6 +5,10 @@
     <h2>Customers</h2>
     <a href="{% url 'customer_create' %}" class="btn">+ Добавить</a>
 </div>
+<form method="get" style="margin-bottom: 20px; display: flex; gap: 10px;">
+    <input type="text" name="search" placeholder="Поиск по имени...">
+    <button type="submit" class="btn">Найти</button>
+</form>
 
 <div class="card">
     <table>

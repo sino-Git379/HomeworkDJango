@@ -5,7 +5,12 @@
     <h2>Products</h2>
     <a href="{% url 'product_create' %}" class="btn">+ Добавить</a>
 </div>
-
+<form method="get" style="margin-bottom: 20px; display: flex; gap: 10px;">
+    <input type="text" name="search" placeholder="Поиск по названию...">
+    <input type="number" name="min_price" placeholder="Цена от">
+    <input type="number" name="max_price" placeholder="Цена до">
+    <button type="submit" class="btn">Найти</button>
+</form>
 <div class="card">
     <table>
         <thead>
